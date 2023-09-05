@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in Page</title>
+    <link rel="stylesheet" href="{% static 'signin.css' %}">
+    <script>
+        function navigateToSecondPage() {
+            window.location.href="/login";
+        }
+    </script>
+</head>
+<body>
+    <container>
+        <div class="Sign-head">
+            <div class='head'>
+                <form method="post"action="/signin/">
+                    {% csrf_token %}
+                    <h1>Welcome to Smart Leraning</h1><br>
+                    <p>Please login first</p><br> 
+                    <div class='input-filed'>
+                        <label for="Username">Please enter your Usernanme</label>
+                        <input type="text" id="Username" name="Username" required><br>
+                    </div>
+                    <div class='input-filed'>
+                        <label for="Password">Please enter your Password</label>
+                        <input type="password" id="Password" name="Password" required><br>
+                    </div><br>
+                    <div class='forget'>
+                        <input type="checkbox"><label for="" >Remember me</label>
+                        <a href="#">Froget Password</a>
+                    </div>
+                    <button type="submit">Sign In</button><br><br>
+                    <li style="float: left;"><a href="http://127.0.0.1:8000/sign_up">註冊頁面</a></li>
+                    <span style="color: red;">{{ error_msg }}</span>
+                    <div class="login-form-footer">
+                        <a href="#">
+                            <img class="social-icon"
+                            width="30"
+                            src="https://upload.wikimedia.org/wikipedia/en/0/04/Facebook_f_logo_%282021%29.svg"
+                            alt="">Facebook
+                        </a>
+                        <a href="#">
+                            <img class="social-icon"
+                            width="30"
+                            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" 
+                            alt="">Google
+                        </a>
+                    </div>
+                </form>        
+            </div>
+        </div>
+    </container>    
+</body>
+</html>

@@ -12,12 +12,10 @@
     <section>
         <div class="Login-head">
             <div class="head">
-                <form class="Login-form">
+                <form method="post"action="/login/">
+                    {% csrf_token %}
                     <h1>Login</h1><br>
-                    <div class="input-filed">
-                        <label for="Email">Please enter your Email</label>
-                        <input type="text" id="Email" name="Email" required><br>
-                    </div>
+                    {% csrf_token %}
                     <div class="input-filed">
                         <label for="Username">Set up Username</label>
                         <input type="text" id="Username" name="Username" required><br> 
@@ -26,6 +24,9 @@
                         <label for="Password">Please enter your Password</label>
                         <input type="text" id="Password" name="Password" required><br>
                     </div>
+                    <input type="submit" value="提交"/>
+                    <span style="color: blue;">{{ ok_msg }}</span>
+                    <li style="float: left;"><a href="http://127.0.0.1:8000/signin/">登入</a></li>
                     <div class="login-form-footer">
                         <a href="#">
                             <img class="social-icon"

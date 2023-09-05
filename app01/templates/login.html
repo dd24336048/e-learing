@@ -1,47 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page </title>
-    <link rel="stylesheet" href="login.css" type="text/css">
+{% extends 'base.html' %}
 
-</head>
-<body>
-    <section>
-        <div class="Login-head">
-            <div class="head">
-                <form class="Login-form">
-                    <h1>Login</h1><br>
-                    <div class="input-filed">
-                        <label for="Email">Please enter your Email</label>
-                        <input type="text" id="Email" name="Email" required><br>
-                    </div>
-                    <div class="input-filed">
-                        <label for="Username">Set up Username</label>
-                        <input type="text" id="Username" name="Username" required><br> 
-                    </div>
-                    <div class="input-filed">
-                        <label for="Password">Please enter your Password</label>
-                        <input type="text" id="Password" name="Password" required><br>
-                    </div>
-                    <div class="login-form-footer">
-                        <a href="#">
-                            <img class="social-icon"
-                            width="30"
-                            src="https://upload.wikimedia.org/wikipedia/en/0/04/Facebook_f_logo_%282021%29.svg"
-                            alt="">Facebook
-                        </a>
-                        <a href="#">
-                            <img class="social-icon"
-                            width="30"
-                            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" 
-                            alt="">Google
-                        </a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-</body>
-</html>
+{% block content %}
+
+<h1>AuthDev</h1>
+<h3>登入</h3>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form }}
+
+    <input class="btn btn-primary" type="submit" value="送出" />
+    <p>還沒有帳號嗎? <a href="{% url 'Register' %}">註冊</a></p>
+</form>
+
+{% endblock  %}

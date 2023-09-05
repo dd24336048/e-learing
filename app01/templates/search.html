@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英文单词搜索</title>
+</head>
+<body>
+    <h1>英文单词搜索</h1>
+
+    <form method="GET" action="{% url 'Search' %}">
+        <input type="text" name="query" placeholder="输入要搜索的单词">
+        <button type="submit">搜索</button>
+    </form>
+
+    {% if query %}
+        <h2>搜索结果</h2>
+        <ul>
+            {% for word in english_words %}
+                <li>
+                    <strong>{{ word.word }}</strong> - {{ word.meaning }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
