@@ -25,4 +25,5 @@ urlpatterns = [
    path('login',views.sign_in,name='Login'),
    path('logout',views.log_out,name='Logout'),
    path('search/',views.word_search,name='Search'),
+    path('starExam',views.starExam,name='開始考試'),
 ]

@@ -120,12 +120,12 @@ USE_TZ = True
 # 靜態文件
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "/Users/dd24336048/112專題/myproject/django_test/app01/static"),
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CSRF_TRUSTED_ORIGINS = ['https://9263-2402-7500-569-6b9c-c580-c22f-fae5-334d.ngrok-free.app']
+CSRF_TRUSTED_ORIGINS = [' https://ed02-2001-b011-fe02-13be-d57b-9fec-d67f-a07f.ngrok-free.app/']
