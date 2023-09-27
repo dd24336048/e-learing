@@ -5,7 +5,7 @@ from app01.models import EnglishWord
 
 class Command(BaseCommand):
     help = 'Import English words from CSV file'
-
+    
     def handle(self, *args, **options):
         current_dir = os.path.dirname(os.path.abspath(__file__))
         csv_file_path = os.path.join(current_dir, 'english_words.csv')

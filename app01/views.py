@@ -69,3 +69,7 @@ def word_search(request):
         return render(request, 'search.html', context)
     
     return render(request, 'search.html')  # 渲染搜索页面
+#考試介面
+def starExam(request):
+    return render(request,'exam.html')
+

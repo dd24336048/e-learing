@@ -8,3 +8,14 @@ class EnglishWord(models.Model):
 
     def __str__(self):
         return self.word
+#單選
+class QuizQuestion(models.Model):
+    TEXT_number = models.CharField(max_length=10,)
+    topic = models.TextField()
+    answer_options = models.CharField(max_length=100)
+    answer = models.CharField(max_length=5)
+    year = models.CharField(max_length=10)
+
+    def __str__(self):
+        return f"{self.question_id}: {self.question_text}"
+      
