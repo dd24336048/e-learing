@@ -9,13 +9,16 @@ class EnglishWord(models.Model):
     def __str__(self):
         return self.word
 #單選
-class QuizQuestion(models.Model):
-    TEXT_number = models.CharField(max_length=10,)
+class Academic(models.Model):
     topic = models.TextField()
-    answer_options = models.CharField(max_length=100)
-    answer = models.CharField(max_length=5)
+    optionA = models.TextField()
+    optionB = models.TextField()
+    optionC = models.TextField()
+    optionD = models.TextField()
+    answer = models.CharField(max_length=10)
     year = models.CharField(max_length=10)
+    topic_number = models.CharField(max_length=10)
 
     def __str__(self):
-        return f"{self.question_id}: {self.question_text}"
+        return f"Topic: {self.topic}, Answer: {self.answer}, Year: {self.year}, Topic Number: {self.topic_number}"
       

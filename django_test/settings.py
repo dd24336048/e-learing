@@ -120,9 +120,11 @@ USE_TZ = True
 # 靜態文件
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "/Users/dd24336048/112專題/myproject/django_test/app01/static"),
+    os.path.join(BASE_DIR, 'static'),  # 这里设置你的静态文件源目录
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')  # 这里设置用于收集静态文件的目标目录
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
