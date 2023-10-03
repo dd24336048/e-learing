@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>考試頁面</title>
+</head>
+<body>
+    <form method="post" action="{% url 'submit_exam' %}">
+        {% csrf_token %}
+        {% for paper in exam_papers %}
+        <div class="paper">
+            <h2>{{ paper.topic }}</h2>
+            <ul>
+                {% for academic in paper.pid.all %}
+                <li>
+                    <p>{{ academic.topic }}</p>
+                    <ul>
+                        <li>
+                            <input type="radio" name="paper_{{ paper.id }}" value="{{ academic.optionA }}">
+                            {{ academic.optionA }}
+                        </li>
+                        <li>
+                            <input type="radio" name="paper_{{ paper.id }}" value="{{ academic.optionB }}">
+                            {{ academic.optionB }}
+                        </li>
+                        <li>
+                            <input type="radio" name="paper_{{ paper.id }}" value="{{ academic.optionC }}">
+                            {{ academic.optionC }}
+                        </li>
+                        <li>
+                            <input type="radio" name="paper_{{ paper.id }}" value="{{ academic.optionD }}">
+                            {{ academic.optionD }}
+                        </li>
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+        <!-- 提交按鈕應該位於for迴圈外面 -->
+        <button type="submit">提交</button>
+    </form>
+</body>
+</html>
+

@@ -8,7 +8,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import EnglishWord
 from django.http import JsonResponse
 from django.db.models import Q
-
+from . models import Testpaper
 
 
 
@@ -71,5 +71,13 @@ def word_search(request):
     return render(request, 'search.html')  # 渲染搜索页面
 #考試介面
 def starExam(request):
-    return render(request,'exam.html')
+    exam_papers = Testpaper.objects.all()
+    for paper in exam_papers:
+        print(f"Testpaper: {paper.topic}, Time: {paper.time}")
+        for academic in paper.pid.all():
+            print(f"Academic Topic: {academic.topic}, Answer: {academic.answer}, Year: {academic.year}")
+    return render(request, 'exam.html', {'exam_papers': exam_papers})
 
+def submit_exam(request):
+    return 
+    
