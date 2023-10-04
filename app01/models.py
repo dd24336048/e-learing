@@ -25,6 +25,6 @@ class Academic(models.Model):
         return f"Topic: {self.topic}, Answer: {self.answer}, Year: {self.year}, Topic Number: {self.topic_number}"
 #試卷表
 class Testpaper(models.Model):
-    topic = models.CharField('題目',max_length=40,unique=True) 
+    topic = models.CharField('題目',max_length=40,unique=True)
     pid = models.ManyToManyField(Academic)
     time = models.IntegerField('考試時長',help_text = '分鐘')
