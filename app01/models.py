@@ -17,7 +17,7 @@ class Academic(models.Model):
     optionB = models.TextField()
     optionC = models.TextField()
     optionD = models.TextField()
-    answer = models.CharField(max_length=10)
+    answer = models.TextField()
     year = models.CharField(max_length=10)
     topic_number = models.CharField(max_length=10)
 
@@ -28,3 +28,7 @@ class Testpaper(models.Model):
     topic = models.CharField('題目',max_length=40,unique=True)
     pid = models.ManyToManyField(Academic)
     time = models.IntegerField('考試時長',help_text = '分鐘')
+#成績紀錄
+class Record(models.Model):
+    grade = models.FloatField('成績')
+    time = models.DateTimeField('考試時間',blank=True,null=True)

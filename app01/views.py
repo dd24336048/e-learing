@@ -10,7 +10,9 @@ from django.http import JsonResponse
 from django.db.models import Q
 from . models import Testpaper
 from . models import Academic
-
+from . models import Record
+from django.contrib.auth.models import User
+from datetime import datetime
 
 
 
@@ -80,5 +82,22 @@ def starExam(request):
     return render(request, 'exam.html', {'exam_papers': exam_papers})
 
 def submit_exam(request):
-    return 
+    if request.method == 'POST':
+       stu_answers = request.POST
+       now = datetime.now()
+       correct_answers = {}
+       questions = Academic.objects.all()
+       stu_grade = 0
+       print(stu_answers)
+       for question in questions:
+           correct_answers[question.topic_number] = question.answer
+       for question_id, user_answer in stu_answers.items():
+           correct_answer = correct_answers.get(question_id) 
+           if correct_answers and stu_answers == correct_answer:
+               stu_grade += 1   
+       record_grade = Record(grade = stu_grade,time = now)
+       record_grade.save()
+       
+       
+    return render(request , 'submit.html')
     

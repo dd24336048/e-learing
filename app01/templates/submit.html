@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="container">
+        <br>
+        <h3>考试成绩</h3>
+        <p></p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>成绩</th>
+                    <th>考试时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for grade1 in Record %}
+                <tr class="table">
+                    <td>{{ grade1.grade }}</td>
+                    <td>{{ grade1.time|date:"Y-m-d H:i:s" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
