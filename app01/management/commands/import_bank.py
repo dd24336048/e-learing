@@ -1,14 +1,14 @@
 from django.core.management.base import BaseCommand
 import pandas as pd
 from app01.models import Academic
-
+import os
 class Command(BaseCommand):
     help = 'Import data from CSV file'
 
     def handle(self, *args, **kwargs):
         # 定义CSV文件的绝对路径
-        csv_file_path = 'C:/Users/user/Desktop/112專題/django/app01/management/commands/academic_test.csv'
-        
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        csv_file_path = os.path.join(current_dir, 'academic_test.csv')
         df = pd.read_csv(csv_file_path, sep='@')
 
         

@@ -81,23 +81,42 @@ def starExam(request):
     
     return render(request, 'exam.html', {'exam_papers': exam_papers})
 
+import re  # 导入正则表达式模块
+
+# ...
+
 def submit_exam(request):
     if request.method == 'POST':
-       stu_answers = request.POST
-       now = datetime.now()
-       correct_answers = {}
-       questions = Academic.objects.all()
-       stu_grade = 0
-       print(stu_answers)
-       for question in questions:
-           correct_answers[question.topic_number] = question.answer
-       for question_id, user_answer in stu_answers.items():
-           correct_answer = correct_answers.get(question_id) 
-           if correct_answers and stu_answers == correct_answer:
-               stu_grade += 1   
-       record_grade = Record(grade = stu_grade,time = now)
-       record_grade.save()
+        stu_answers = request.POST
+        now = datetime.now()
+        correct_answers = {}
+        questions = Academic.objects.all()
+        stu_grade = 0
+        
+        for question in questions:
+            correct_answers[question.id] = question.answer
+        
+        for question_id, stu_answer in stu_answers.items():
+            if question_id != 'csrfmiddlewaretoken':
+                # 使用正则表达式提取数字部分作为问题ID
+                match = re.match(r'paper_(\d+)', question_id)
+                if match:
+                    question_id = int(match.group(1))
+                    correct_answer = correct_answers.get(question_id)
+                    if correct_answer and stu_answer == correct_answer:
+                        stu_grade += 1
+                
+        record_grade = Record(grade=stu_grade, time=now)
+        record_grade.save()
+        
+        print(str(stu_answers) + "答案")
+        print(correct_answers)
+        print(stu_grade)
        
-       
-    return render(request , 'submit.html')
+    return render(request, 'submit.html', {'stu_grade': stu_grade})
+
+
+
+
+
     
