@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>選擇考卷</title>
+    </head>
+    <body>
+        <h1>請選擇考卷年份</h1>
+        <form method="post" action="{% url '選擇考卷' %}">
+            {% csrf_token %}
+            <label for="year">選擇年份</label>
+            <select name="year" id="year">
+                <option value='103'>103</option>
+                <option value='104'>104</option>
+                <option value='105'>105</option>
+                <option value='106'>106</option>
+                <option value='107'>107</option>
+                <option value='108'>108</option>
+                <option value='109'>109</option>
+                <option value='110'>110</option>
+                <option value='111'>111</option>
+                <option value='112'>112</option>
+            </select>
+            <input type="button" value="生成考卷" onclick="redirectToLink()">
+        </form>
+        <script>
+            function redirectToLink() {
+                var yearSelection = document.getElementById("year");
+                var selectedYear = yearSelection.value;
+                if (selectedYear === '112') {
+                    window.location.href = "http://127.0.0.1:8000/112_testpaper";  // 替换为你想要的链接
+                }if (selectedYear === '111') {
+                    window.location.href = "http://127.0.0.1:8000/111_testpaper";  // 替换为你想要的链接
+                }if (selectedYear === '110') {
+                    window.location.href = "http://127.0.0.1:8000/110_testpaper";  // 替换为你想要的链接
+                }if (selectedYear === '109') {
+                    window.location.href = "http://127.0.0.1:8000/109_testpaper";  // 替换为你想要的链接
+                }if (selectedYear === '108') {
+                    window.location.href = "http://127.0.0.1:8000/108_testpaper";  // 替换为你想要的链接
+                }if (selectedYear === '107') {
+                    window.location.href = "http://127.0.0.1:8000/107_testpaper";  // 替换为你想要的链接
+                }if (selectedYear === '106') {
+                    window.location.href = "http://127.0.0.1:8000/106_testpaper";  // 替换为你想要的链接
+                }if (selectedYear === '105') {
+                    window.location.href = "http://127.0.0.1:8000/105_testpaper";  // 替换为你想要的链接
+                }if (selectedYear === '104') {
+                    window.location.href = "http://127.0.0.1:8000/104_testpaper";  // 替换为你想要的链接
+                }if (selectedYear === '103') {
+                    window.location.href = "http://127.0.0.1:8000/103_testpaper";  // 替换为你想要的链接
+                }
+                
+                 else {
+                    // 执行生成考卷的逻辑
+                    // 这里可以添加你的生成考卷的JavaScript代码
+                }
+            }
+        </script>
+    </body>
+</html>

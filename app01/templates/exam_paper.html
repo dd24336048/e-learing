@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>查看考卷</title>
+    </head>
+    <body>
+        <h1>考卷內容</h1>
+        <ul>
+            {% for exam_paper in exam_papers %}
+            <li>
+                <h2>{{ exam_paper.name }}</h2>
+                <p>{{ exam_paper.description }}</p>
+                <ul>
+                    {% for question in exam_paper.questions_optional_number1.all %}
+                    <li>{{ question }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
