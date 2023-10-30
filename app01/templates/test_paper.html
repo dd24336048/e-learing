@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>考試頁面</title>
+</head>
+<body>
+    <form method="post" action="{% url '考卷內容' %}">
+        {% csrf_token %}
+        <label for="year">選擇年份</label>
+        <select name="year" id="year">
+            <option value='103'>103</option>
+            <option value='104'>104</option>
+            <option value='105'>105</option>
+            <option value='106'>106</option>
+            <option value='107'>107</option>
+            <option value='108'>108</option>
+            <option value='109'>109</option>
+            <option value='110'>110</option>
+            <option value='111'>111</option>
+            <option value='112'>112</option>
+        </select>
+        <input type="submit" value="生成考卷">
+    </form>
+    {% for exam_paper in exam_testpaper_year %}
+    <div class="paper">
+        <ul>
+            {% for question in exam_paper.questions_optional_number1.all %}
+                <li>{{ question.topic }}</li>
+                <li>
+                    <input type="radio" name="paper_{{ question.id }}" value="{{ question.answer_A }}">
+                    {{ question.answer_A }}
+                </li>
+                <li>
+                    <input type="radio" name="paper_{{ question.id }}" value="{{ question.answer_B }}">
+                    {{ question.answer_B }}
+                </li>
+                <li>
+                    <input type="radio" name="paper_{{ question.id }}" value="{{ question.answer_C }}">
+                    {{ question.answer_C }}
+                </li>
+                <li>
+                    <input type="radio" name="paper_{{ question.id }}" value="{{ question.answer_D }}">
+                    {{ question.answer_D }}
+                </li>
+                {% for question2 in exam_paper.questions_optional_number2.all %}
+                <li>
+                    <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_A }}">
+                    {{ question2.answer_A }}
+                </li>
+                <li>
+                    <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_B }}">
+                    {{ question2.answer_B }}
+                </li>
+                <li>
+                    <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_C }}">
+                    {{ question2.answer_C }}
+                </li>
+                <li>
+                    <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_D }}">
+                    {{ question2.answer_D }}
+                </li>
+            {% endfor %}
+            {% endfor %}
+           
+               
+                
+            {% for question2 in exam_paper.questions_optional_number2.all %}
+                <li>
+                    <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_A }}">
+                    {{ question2.answer_A }}
+                </li>
+                <li>
+                    <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_B }}">
+                    {{ question2.answer_B }}
+                </li>
+                <li>
+                    <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_C }}">
+                    {{ question2.answer_C }}
+                </li>
+                <li>
+                    <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_D }}">
+                    {{ question2.answer_D }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>考試頁面</title>
+    <style>
+        /* 使用 CSS 将选项水平排列 */
+        .horizontal-options {
+            display: flex;
+            flex-direction: row;
+        }
+
+        /* 样式化选项 */
+        .horizontal-options label {
+            margin-right: 10px; /* 可以根据需要调整间距 */
+        }
+    </style>
+</head>
+<body>
+    {% for exam_paper in exam_testpaper_year %}
+    <div class="paper">
+        <ul>
+            {% for question in exam_paper.questions_optional_number1.all %}
+            <li>{{ question.topic_number}}</li>
+                <li>{{ question.topic }}</li>
+                <div class="horizontal-options">
+                    <label>
+                        <input type="radio" name="paper_{{ question.id }}" value="{{ question.answer_A }}">
+                        {{ question.answer_A }}
+                    </label>
+                    <label>
+                        <input type="radio" name="paper_{{ question.id }}" value="{{ question.answer_B }}">
+                        {{ question.answer_B }}
+                    </label>
+                    <label>
+                        <input type="radio" name="paper_{{ question.id }}" value="{{ question.answer_C }}">
+                        {{ question.answer_C }}
+                    </label>
+                    <label>
+                        <input type="radio" name="paper_{{ question.id }}" value="{{ question.answer_D }}">
+                        {{ question.answer_D }}
+                    </label>
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+    {% if group2_1 %}
+    <div class="optional-topic">
+        <p>Topic: {{ group2_1.topic }}</p>
+    </div>
+    {% endif %}
+    {% for exam_paper in exam_testpaper_year %}
+    {% for question2 in exam_paper.questions_optional_number2.all|slice:":5" %}
+            <li>{{ question2.topic_number}}</li>
+            <label>
+                <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_A }}">
+                {{ question2.answer_A }}
+            </label>
+            <label>
+                <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_B }}">
+                {{ question2.answer_B }}
+            </label>
+            <label>
+                <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_C }}">
+                {{ question2.answer_C }}
+            </label>
+            <label>
+                <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_D }}">
+                {{ question2.answer_D }}
+            </label>
+        {% endfor %}
+        {% endfor %}
+    {% if group2_2 %}
+    <div class="optional-topic">
+         <p>Topic: {{ group2_2.topic }}</p>
+    </div>
+    {% endif %}
+    {% for exam_paper in exam_testpaper_year %}
+    {% for question2 in exam_paper.questions_optional_number2.all|slice:"5:10" %}
+            <li>{{ question2.topic_number}}</li>
+            <label>
+                <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_A }}">
+                {{ question2.answer_A }}
+            </label>
+            <label>
+                <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_B }}">
+                {{ question2.answer_B }}
+            </label>
+            <label>
+                <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_C }}">
+                {{ question2.answer_C }}
+            </label>
+            <label>
+                <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_D }}">
+                {{ question2.answer_D }}
+            </label>
+        {% endfor %}
+        {% endfor %}
+        {% if group2_3 %}
+    <div class="optional-topic">
+        <p>Topic: {{ group2_3.topic }}</p>
+    </div>
+{% endif %}
+    {% for exam_paper in exam_testpaper_year %}
+    {% for question2 in exam_paper.questions_optional_number2.all|slice:"10:15" %}
+            <li>{{ question2.topic_number}}</li>
+            <label>
+                <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_A }}">
+                {{ question2.answer_A }}
+            </label>
+            <label>
+                <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_B }}">
+                {{ question2.answer_B }}
+            </label>
+            <label>
+                <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_C }}">
+                {{ question2.answer_C }}
+            </label>
+            <label>
+                <input type="radio" name="paper_{{ question2.id }}" value="{{ question2.answer_D }}">
+                {{ question2.answer_D }}
+            </label>
+        {% endfor %}
+        {% endfor %}
+    {% if group3_1 %}
+    <div class="optional-topic">
+        <p>Topic: {{ group3_1.topic }}</p>
+    </div>
+    {% endif %}
+    {% for exam_paper in exam_testpaper_year %}
+    {% for question3 in exam_paper.questions_optional_number3.all|slice:":10" %}
+            <li>{{ question3.topic_number}}</li>
+            <label>
+            <input type="radio" name="paper_{{ question3.id }}" value="{{ question3.answer_A }}">
+                {{ question3.answer_A }}
+            </label>
+            <label>
+            <input type="radio" name="paper_{{ question3.id }}" value="{{ question3.answer_B }}">
+               {{ question3.answer_B }}
+            </label>
+            <label>
+            <input type="radio" name="paper_{{ question3.id }}" value="{{ question3.answer_C }}">
+               {{ question3.answer_C }}
+            </label>
+            <label>
+            <input type="radio" name="paper_{{ question3.id }}" value="{{ question3.answer_D }}">
+               {{ question3.answer_D }}
+            </label>
+            <label>
+                <input type="radio" name="paper_{{ question3.id }}" value="{{ question3.answer_D }}">
+               {{ question3.answer_E }}
+            </label>
+            <label>
+            <input type="radio" name="paper_{{ question3.id }}" value="{{ question3.answer_D }}">
+                {{ question3.answer_F }}
+            </label>
+            <label>
+            <input type="radio" name="paper_{{ question3.id }}" value="{{ question3.answer_D }}">
+                {{ question3.answer_G }}
+            </label>
+            <label>
+            <input type="radio" name="paper_{{ question3.id }}" value="{{ question3.answer_D }}">
+                {{ question3.answer_H }}
+            </label>
+            <label>
+                <input type="radio" name="paper_{{ question3.id }}" value="{{ question3.answer_D }}">
+                {{ question3.answer_I }}
+            </label>
+            <label>
+            <input type="radio" name="paper_{{ question3.id }}" value="{{ question3.answer_D }}">
+                {{ question3.answer_J }}
+            </label>
+    {% endfor %}
+    {% endfor %}
+    
+
+</body>
+</html>

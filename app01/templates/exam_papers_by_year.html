@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>開始考試</title>
+</head>
+<body>
+    <h1>請選擇考卷年份</h1>
+    <form method="post" action="{% url '考試開始' %}">
+        {% csrf_token %}
+        <label for="year_selection">選年份：</label>
+        <select name="year" id="year_selection">
+            {% for year in paper_years %}
+                <option value="{{ year }}">{{ year }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Go">
+    </form>
+
+    <ul>
+        {% for exam_paper in exam_papers_by_year %}
+            <li>
+                <h2>{{ exam_paper.name }}</h2>
+                <p>{{ exam_paper.description }}</p>
+                <ul>
+                    {% for question in exam_paper.questions_optional_number3.all %}
+                        <li>
+                            {{ question }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
