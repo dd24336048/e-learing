@@ -18,9 +18,10 @@
         <ul>
             {% for word in english_words %}
                 <li>
-                    <strong>{{ word.word }}</strong> - {{ word.meaning }}
+                    <strong>{{ word.word }}</strong> - {{ word.phonetic_symbols }} {{word.part_of_speech }}
                 </li>
             {% endfor %}
+            <a href=""
         </ul>
     {% endif %}
 </body>

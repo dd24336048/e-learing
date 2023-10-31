@@ -53,7 +53,7 @@ def sign_in(request):
         'form':form
     }
 
-    return render(request,'login.html',context)
+    return render(request,'login2.html',context)
 
 #登出
 def log_out(request):
@@ -66,16 +66,19 @@ def word_search(request):
         query = request.GET.get('query', '')  # 获取用户输入的查询词
 
         # 使用Q对象进行模糊搜索
-        english_words = EnglishWord.objects.filter(Q(word__icontains=query) | Q(meaning__icontains=query))
-
+        english_words = EnglishWord.objects.filter(Q(word__icontains=query) | Q(explain__icontains=query))
+        tag = "https://dictionary.cambridge.org/zht/詞典/英語-漢語-繁體/" + query
+        print(tag)
         context = {
             'query': query,
             'english_words': english_words,
+            'tag' : tag,
         }
 
         return render(request, 'search.html', context)
     
     return render(request, 'search.html')  # 渲染搜索页面
+
 #考試介面
 def starExam(request):
     exam_papers = Academic.objects.all()

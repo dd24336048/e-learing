@@ -18,4 +18,6 @@ from .models import(OptionalTopicNumber4)
 admin.site.register(OptionalTopicNumber4)
 from .models import(ExamPapers)
 admin.site.register(ExamPapers)
+from .models import(EnglishWord)
+admin.site.register(EnglishWord)
 # Register your models here.
