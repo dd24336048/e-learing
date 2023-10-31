@@ -13,7 +13,7 @@ from django.db.models import Q
 from . models import  student_scores
 from django.contrib.auth.models import User
 from datetime import datetime
-from .models import EnglishOptionalNumber1,EnglishOptionalNumber2,EnglishOptional,EnglishOptionalNumber3,EnglishOptionalNumber4,EnglishOptionalNumber5,OptionalTopicNumber2,OptionalTopicNumber3,OptionalTopicNumber5,ExamPaper,ExamPapers
+from .models import EnglishOptionalNumber1,EnglishOptionalNumber2,EnglishWord,EnglishOptionalNumber3,EnglishOptionalNumber4,EnglishOptionalNumber5,OptionalTopicNumber2,OptionalTopicNumber3,OptionalTopicNumber5,ExamPaper,ExamPapers
 from django.shortcuts import render
 from django.db.models import Q
 
@@ -22,7 +22,7 @@ from django.db.models import Q
 @login_required(login_url="Login")
 # Create your views here.
 def index(request):
-    return render(request,"home.html")
+    return render(request,"hp.html")
 #註冊
 def sign_up(request):
     form = RegisterForm()
@@ -62,18 +62,18 @@ def log_out(request):
     return redirect('Login')
  #搜尋單字系統
 def word_search(request):
-    # if request.method == 'GET':
-    #     query = request.GET.get('query', '')  # 获取用户输入的查询词
+    if request.method == 'GET':
+        query = request.GET.get('query', '')  # 获取用户输入的查询词
 
-    #     # 使用Q对象进行模糊搜索
-    #     english_words = EnglishWord.objects.filter(Q(word__icontains=query) | Q(meaning__icontains=query))
+        # 使用Q对象进行模糊搜索
+        english_words = EnglishWord.objects.filter(Q(word__icontains=query) | Q(meaning__icontains=query))
 
-    #     context = {
-    #         'query': query,
-    #         'english_words': english_words,
-    #     }
+        context = {
+            'query': query,
+            'english_words': english_words,
+        }
 
-    #     return render(request, 'search.html', context)
+        return render(request, 'search.html', context)
     
     return render(request, 'search.html')  # 渲染搜索页面
 #考試介面
